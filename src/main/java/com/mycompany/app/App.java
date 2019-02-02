@@ -14,9 +14,10 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class App 
 {
-	public static boolean search(ArrayList<Integer> array, int x, int y) {
+	public static boolean search(ArrayList<Integer> array, int x, int y ,int z) {
     	String xx = Integer.toString(x);
 		String yy= Integer.toString(y);
+		String zz= Integer.toString(z);
 		if(xx== null || yy==null) return false;
 	     if (array == null) return false;
 	      
@@ -29,6 +30,11 @@ public class App
 	      if(elt == y) return true;
 		 
 	        }
+	      for (int elt : array) {
+	          
+		      if(elt == z) return true;
+			 
+		        }
 		 }
 	      return false;
 	     
@@ -61,8 +67,11 @@ public class App
           
           String input3 = req.queryParams("input3").replaceAll("\\s","");
           int input3AsInt = Integer.parseInt(input3);
+          
+          String input4 = req.queryParams("input4").replaceAll("\\s","");
+          int input4AsInt = Integer.parseInt(input4);
 
-          boolean result = App.search(inputList, input2AsInt, input3AsInt);
+          boolean result = App.search(inputList, input2AsInt, input3AsInt, input4AsInt);
 
          Map map = new HashMap();
           map.put("result", result);
